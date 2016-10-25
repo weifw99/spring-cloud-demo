@@ -1,0 +1,15 @@
+server:
+  port: 8763
+eureka:
+  instance:
+    hostname: peer3
+    statusPageUrlPath: ${management.context-path}/info
+    healthCheckUrlPath: ${management.context-path}/health
+  client:
+    serviceUrl:
+      defaultZone: http://peer2:8762/eureka/,http://peer1:8761/eureka/
+    healthcheck:
+      enabled: true
+    register-with-eureka: true
+    fetch-registry: true
+    eureka-service-url-poll-interval-seconds: 60
