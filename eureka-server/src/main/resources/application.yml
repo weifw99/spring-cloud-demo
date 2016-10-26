@@ -1,7 +1,6 @@
 server:
   port: 8761
 eureka:
-  hostname: localhost
   client:
     serviceUrl:
       defaultZone: http://127.0.0.1:8761/eureka/ #对应服务注册中心的配置内容，指定服务注册中心的位置
@@ -10,7 +9,12 @@ eureka:
     register-with-eureka: false #是否主车道注册中心, 默认true
     fetch-registry: false
     eureka-service-url-poll-interval-seconds: 60 #多少时间轮询服务器的变化
+#  server:
+#    enableSelfPreservation: false #禁用服务器的自我保护 , 默认启用
   instance:
     statusPageUrlPath: ${management.context-path}/info
     healthCheckUrlPath: ${management.context-path}/health
     prefer-ip-address: true
+    leaseRenewalIntervalInSeconds: 1 #租约更新时间间隔(多长时间向注册中心发送心跳 , 表明服务还活着 , 默认30秒)
+    leaseExpirationDurationInSeconds: 2 #租约到期时间(默认90秒)
+
