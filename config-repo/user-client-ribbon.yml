@@ -1,9 +1,11 @@
+debug: false
 info:
   id: ${spring.application.name}
 server:
-  port: 8888
+  port: 8040
 
 eureka:
+  hostname: localhost
   client:
     serviceUrl:
       defaultZone: http://127.0.0.1:8761/eureka/
@@ -13,10 +15,8 @@ eureka:
     fetch-registry: true
     eureka-service-url-poll-interval-seconds: 60
   instance:
-    hostname: localhost
     statusPageUrlPath: ${management.context-path}/info
     healthCheckUrlPath: ${management.context-path}/health
 #    prefer-ip-address: true
     leaseRenewalIntervalInSeconds: 1 #租约更新时间间隔(多长时间向注册中心发送心跳 , 表明服务还活着 , 默认30秒)
     leaseExpirationDurationInSeconds: 2 #租约到期时间(默认90秒)
-

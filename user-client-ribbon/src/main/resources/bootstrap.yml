@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: user-client-ribbon
+  cloud:
+    config:
+      enabled: true #启用用spring-cloud config(默认true)
+      uri: http://localhost:8888
