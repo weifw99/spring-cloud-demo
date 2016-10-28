@@ -32,7 +32,8 @@ public class UserService {
         Map<String, Object> map = new HashMap<>();
         map.put("id", user.getId());
         map.put("name", user.getName());
-        String s = restTemplate.postForObject("http://USER-SERVICE/saveUser", null, String.class, map);
+        //String s = restTemplate.postForObject("http://USER-SERVICE/saveUser", null, String.class, map);
+        HttpStatus statusCode = restTemplate.postForEntity("http://USER-SERVICE/saveUser", user, Void.class).getStatusCode();
         //HttpStatus statusCode = restTemplate.postForEntity("http://USER-SERVICE/saveUser", null, String.class, map).getStatusCode();
         logger.info("UserService.saveUser");
     }
